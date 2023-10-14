@@ -1,4 +1,4 @@
-﻿namespace ProductMS.Models
+﻿namespace ProductMS.Models.DTO
 {
     public class ProductDTO
     {

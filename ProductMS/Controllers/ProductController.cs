@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ProductMS.Models;
+using ProductMS.Data;
+using ProductMS.Models.DTO;
 
 namespace ProductMS.Controllers
 {
@@ -11,11 +12,13 @@ namespace ProductMS.Controllers
         [HttpGet]
         public List<ProductDTO> GetAll() 
         {
-            return new List<ProductDTO> {
+            return ProductDB.ProductList;
+        }
 
-                new ProductDTO {Id=1,Name="Laptop" },
-                new ProductDTO {Id=2,Name="Anchor" }
-            };
+        [HttpGet("{id:int}")]
+        public ProductDTO GetById(int id)
+        {
+            return ProductDB.ProductList.FirstOrDefault(p => p.Id == id);
         }
     }
 }
